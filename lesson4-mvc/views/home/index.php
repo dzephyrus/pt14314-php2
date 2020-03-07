@@ -14,6 +14,7 @@
         <thead>
             <th>ID</th>
             <th>Name</th>
+            <th width="100">Image</th>
             <th>Price</th>
             <th>Star</th>
             <th>
@@ -25,10 +26,14 @@
             <tr>
                 <td><?php echo $pro->id ?></td>
                 <td><?php echo $pro->name ?></td>
+                <td>
+                    <img src="<?= BASE_URL . $pro->image?> " class="img-fluid">
+                </td>
                 <td><?php echo $pro->price ?></td>
                 <td><?php echo $pro->star ?></td>
                 <td>
-                    <a href="<?= BASE_URL . "remove-product?id=$pro->id"?>" class="btn btn-sm btn-danger btn-remove">Xóa</a>
+                    <a href="<?= BASE_URL . "edit-product?id=$pro->id"?>" class="btn btn-sm btn-primary">Sửa</a> &nbsp;
+                    <a href="<?= BASE_URL . "products/remove/$pro->id"?>" class="btn btn-sm btn-danger btn-remove">Xóa</a>
                 </td>
             </tr>
         <?php endforeach;?>

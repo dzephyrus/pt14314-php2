@@ -1,5 +1,6 @@
-<?php 
-require_once './models/Product.php';
+<?php
+namespace Controllers;
+use Models\Product;
 class HomeController{
 
 
