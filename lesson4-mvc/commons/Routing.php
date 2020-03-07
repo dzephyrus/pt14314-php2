@@ -19,6 +19,7 @@ class Routing
 
         $router->get('/', ["Controllers\HomeController", "index"]);
 
+
         $router->get('products/add-product', ["Controllers\ProductController", "addForm"]);
         $router->post('products/save-add', ["Controllers\ProductController", "saveAdd"]);
 
@@ -27,6 +28,7 @@ class Routing
         $router->post('products/check-name', ["Controllers\ProductController", "checkNameExisted"]);
 
         $router->get('admin', ["Controllers\HomeController", "dashboard"]);
+
 
         $dispatcher = new Dispatcher($router->getData());
 

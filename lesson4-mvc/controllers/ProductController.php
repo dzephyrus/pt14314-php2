@@ -2,7 +2,9 @@
 namespace Controllers;
 use Models\Product;
 use Models\Category;
+
 class ProductController extends BaseController {
+
 	public function detail(){
 		echo "Trang chi tiet san pham";
 	}
@@ -84,9 +86,35 @@ class ProductController extends BaseController {
         die;
     }
 
+    public function saveEdit(){
+	    $id = isset($_POST['id']) ? $_POST['id'] : -1;
+        $model = Product::findOne($id);
+        if(!$model){
+            header("location: " . BASE_URL . "?msg=id không tồn tại");
+            die;
+        }
+
+        // gán dữ liệu cho model
+        $model->fill($_POST);
+        // validate dữ liệu thêm 1 lần nữa bằng php => form
+        // lưu file ảnh
+        $image = $_FILES['image'];
+        $filename = $model->image;
+        if($image['size'] > 0){
+            $filename = "public/images/" . uniqid() . '-' . $image['name'];
+            move_uploaded_file($image['tmp_name'], $filename);
+        }
+        $model->image = $filename;
+        // lưu dữ liệu với csdl
+        $model->update();
+        header('location: ' . BASE_URL);
+        die;
+    }
+
     public function checkNameExisted(){
 	    $name = $_POST['name'];
 	    $id = isset($_POST['id']) ? $_POST['id'] : -1;
+
 	    $queryData = Product::where('name', $name);
 
 	    if($id != -1){
@@ -95,6 +123,7 @@ class ProductController extends BaseController {
         $numberRecord = $queryData->count();
 
 	    echo $numberRecord == 0 ? "true" : "false";
+
     }
 }
 

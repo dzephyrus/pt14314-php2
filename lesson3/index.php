@@ -17,8 +17,6 @@ class A{
 
 class B extends A{
 
-	
-
 	function getRelation(){
 		return $this->isMarried;
 	}

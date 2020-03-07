@@ -1,11 +1,7 @@
 {
-    "name": "ginv2/lesson4-mvc",
-    "authors": [
-        {
-            "name": "thienth32",
-            "email": "thienth32@gmail.com"
-        }
-    ],
+
+    "name": "duc/mvc",
+
     "require": {
         "phroute/phroute": "^2.1",
         "illuminate/database": "*",
@@ -18,4 +14,8 @@
             "Commons\\": "commons/"
         }
     }
+
 }
+
+
+

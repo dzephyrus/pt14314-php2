@@ -1,7 +1,9 @@
 <?php
 namespace Controllers;
 use Models\Product;
+
 class HomeController extends BaseController {
+
 
 
 	public function index(){
